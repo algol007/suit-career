@@ -20,6 +20,11 @@ export default new Vuex.Store({
     deleteUser (state, id) {
       const newUsers = state.users.filter(user => user.id !== id)
       state.users = newUsers
+    },
+    search (state, data) {
+      console.log(data)
+      const newUsers = state.users.filter(user => user.name === data)
+      state.users = newUsers
     }
   },
   actions: {
@@ -39,6 +44,9 @@ export default new Vuex.Store({
     },
     deleteUser (ctx, id) {
       ctx.commit('deleteUser', id)
+    },
+    searchUser (ctx, data) {
+      ctx.commit('search', data)
     }
   }
 })
